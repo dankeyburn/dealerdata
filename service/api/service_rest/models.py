@@ -1,6 +1,5 @@
 from django.db import models
 from django.urls import reverse
-from .models import Technician
 
 
 class ManufacturerVO(models.Model):
@@ -41,6 +40,10 @@ class CustomerVO(models.Model):
     address = models.CharField(max_length=200)
     phone_number = models.IntegerField()
 
+class Technician(models.Model):
+    name = models.CharField(max_length=200)
+    employee_number = models.CharField(max_length=50)
+
 class ServiceAppointment(models.Model):
     vehicle_vin = models.CharField(max_length=17)
     appointment_datetime = models.DateTimeField()
@@ -55,7 +58,3 @@ class ServiceAppointment(models.Model):
         related_name="technicians",
         on_delete=models.CASCADE,
     )
-
-class Technician(models.Model):
-    name = models.CharField(max_length=200)
-    employee_number = models.CharFIeld(max_length=50)

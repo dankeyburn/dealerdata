@@ -1,13 +1,14 @@
 from django.urls import path
 
 from .views import (
+    list_appointments,
     create_technician,
 )
 
 urlpatterns = [
     path(
-        "technician/",
-        create_technician,
-        name="create_technician",
+        "services/",
+        list_appointments,
+        name="list_appointments",
     ),
 ]

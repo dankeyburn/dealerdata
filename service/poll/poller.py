@@ -18,18 +18,18 @@ def poll():
         print('Service poller polling for data')
         try:
             # Write your polling logic, here
-            url = 'http://inventory-api:8000/api/services'
+            url = 'http://localhost:8080/services'
             resp = requests.get(url)
             content = json.loads(resp.content)
             for service in content["services"]:
                 ServiceAppointment.objects.update_or_create(
-                    import_href=automobile["href"],
+                    import_href=service["href"],
                     defaults={
-                        "vehicle_vin": automobile["vehicle_vin"],
-                        "appointment_datetime": automobile["appointment_datetime"],
-                        "appointment_reason": automobile["appointment_reason"],
-                        "customer_name": automobile["customer_name"],
-                        "assigned_technician": automobile["assigned_technician"],
+                        "vehicle_vin": service["vehicle_vin"],
+                        "appointment_datetime": service["appointment_datetime"],
+                        "appointment_reason": service["appointment_reason"],
+                        "customer_name": service["customer_name"],
+                        "assigned_technician": service["assigned_technician"],
                     },
                 )
         except Exception as e:
