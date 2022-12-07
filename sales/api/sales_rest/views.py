@@ -51,6 +51,9 @@ class SalesListEncoder(ModelEncoder):
         "automobile": AutomobileVOEncoder(),
     }
 
+    def get_extra_data(self, o):
+        return {"sales_person": o.sales_person.name}
+
 
 class SalesDetainEncoder(ModelEncoder):
     model = Sale
