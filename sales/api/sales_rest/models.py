@@ -13,7 +13,7 @@ class VehicleModelVO(models.Model):
 
     manufacturer = models.ForeignKey(
         ManufacturerVO,
-        related_name="models",
+        related_name="model",
         on_delete=models.CASCADE,
     )
 
@@ -26,7 +26,7 @@ class AutomobileVO(models.Model):
     vin = models.CharField(max_length=17, unique=True)
     model = models.ForeignKey(
         VehicleModelVO,
-        related_name="automobiles",
+        related_name="automobile",
         on_delete=models.CASCADE,
     )
     import_href = models.CharField(max_length=200,unique = True)
@@ -67,4 +67,3 @@ class Sale(models.Model):
         related_name="sale",
         on_delete=models.CASCADE,
     )
-
