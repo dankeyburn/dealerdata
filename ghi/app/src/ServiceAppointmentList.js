@@ -3,18 +3,10 @@ import {useState, useEffect} from 'react';
 export default function ServiceAppointmentList() {
     const [appointments, setAppointments] = useState([])
 
-    // const getData = async ()=> {
-    //     const resp = await fetch('http://localhost:8080/services/', {method: "GET"})
-    //     const data = await resp.json()
-    //     setAppointments(data.appointments)
-    // }
-    // const handleDelete = async (vehicle_vin) => {
-    //     const resp = await fetch(`http://localhost:8080/services/${vehicle_vin}/`, { method:"DELETE"})
-    //     const data = await resp.json()
-    //     // getData();
-    // }
-
-    // const jar = Object.values(appointments)
+    const handleDelete = async (id) => {
+        const resp = await fetch(`http://localhost:8080/services/${appointments.id}/`, { method:"DELETE"})
+        const data = await resp.json()
+    }
 
     useEffect(() => {
         if (appointments.length === 0) {
@@ -26,8 +18,6 @@ export default function ServiceAppointmentList() {
             testData()
         }
     }, [appointments])
-
-    console.log(appointments)
 
     return (
         <>
@@ -51,9 +41,9 @@ export default function ServiceAppointmentList() {
                         <td>{ appointment.appointment_reason }</td>
                         <td>{ appointment.owner }</td>
                         <td>{ appointment.technician.name }</td>
-                        {/* <td>
+                        <td>
                             <button onClick={()=> handleDelete(appointment.id)}>Delete</button>
-                        </td> */}
+                        </td>
                     </tr>
                 );
             })}

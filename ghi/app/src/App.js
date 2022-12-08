@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MainPage from './MainPage';
 import Nav from './Nav';
 import ServiceAppointmentList from './ServiceAppointmentList';
-import AnotherOne from './AnotherOne';
+import ServiceAppointmentFormHook from './ServiceAppointmentFormHook';
 
 function App(props) {
 
@@ -14,7 +14,7 @@ function App(props) {
           <Route path="/" element={<MainPage />} />
           <Route path="/services/" element={<ServiceAppointmentList />} />
           <Route path="/services/vehicle_history/" element={<ServiceAppointmentList vin_id={props.vin_id} />} />
-          <Route path="/services/create/" element={<AnotherOne />} />
+          <Route path="/services/create/" element={<ServiceAppointmentFormHook />} />
         </Routes>
       </div>
     </BrowserRouter>

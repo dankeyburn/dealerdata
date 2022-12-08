@@ -1,10 +1,7 @@
 import React, {useState,useEffect} from 'react'
 
 export default function CreateServiceAppointment() {
-    let [technician, setTechnician] = useState({
-        name: '',
-        employee_number: ''
-    })
+    let [technician, setTechnician] = useState([])
 
     let [appointment, setAppointment] = useState({
         vehicle_vin: '',
@@ -15,11 +12,17 @@ export default function CreateServiceAppointment() {
     })
 
     useEffect(() => {
-        const url = `http://localhost:8080/technicians/`
-        fetch(url, {method: "GET"})
-            .then(res => {res.json()})
-            .then(res => {setTechnician(res)})
-    }, []);
+        if (technician.length === 0) {
+            async function testData() {
+                const resp = await fetch(`http://localhost:8080/technicians/`)
+                const data = await resp.json()
+                console.log(data)
+                setTechnician(data)
+            }
+            testData()
+        }
+    }, [technician]);
+
 
 
     const handleSubmit = async (event) => {
@@ -50,7 +53,7 @@ export default function CreateServiceAppointment() {
         }
     }
 
-    return ( technician &&
+    return (
         <>
             <h1>Create a New Service Appointment</h1>
             <form onSubmit={handleSubmit} id="create-appointment-form">
@@ -70,7 +73,7 @@ export default function CreateServiceAppointment() {
                     <input value={appointment.owner} onChange={(event) => setAppointment({ ...appointment, owner: event.target.value })} placeholder="Owner" required type="text" name="owner" id="owner" className="form-control" />
                     <label htmlFor="owner">Vehicle Owner</label>
                 </div>
-                {/* <div className="mb-3">
+                <div className="mb-3">
                     <select value={appointment.technician} onChange={(event) => setAppointment({ ...appointment, technician: event.target.value })} placeholder="technician" required name="technician" id="technician" className="form-select">
                         <option value="">Assign a Technician</option>
                         {technician?.map(technician => {
@@ -81,7 +84,7 @@ export default function CreateServiceAppointment() {
                             );
                         })}
                     </select>
-                </div> */}
+                </div>
                 <button className="btn btn-primary">Create</button>
             </form>
             <div className="alert alert-success d-none mb-0" id="success-message">
