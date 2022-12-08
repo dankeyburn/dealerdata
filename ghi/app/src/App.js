@@ -3,6 +3,7 @@ import MainPage from './MainPage';
 import Nav from './Nav';
 import SalesList from './SalesList';
 import SaleForm from './SaleForm';
+import SalesPersonHistory from './SalesPersonHistory';
 
 function App(props) {
   if (props.sales === undefined) {
@@ -21,6 +22,7 @@ function App(props) {
     <div className='container'>
       <SalesList sales={props.sales} />
       <SaleForm />
+      <SalesPersonHistory sales={props.sales}/>
     </div>
     </>
   );

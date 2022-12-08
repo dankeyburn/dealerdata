@@ -22,7 +22,7 @@ function SalesList(props) {
                         <td>{ sale.customer.name }</td>
                         <td>{ sale.customer.address }</td>
                         <td>{ sale.customer.phone_number }</td>
-                        <td>{ sale.sales_person }</td>
+                        <td>{ sale.sales_person.name }</td>
                     </tr>
                     );
                 })}

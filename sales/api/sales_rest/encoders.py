@@ -23,14 +23,16 @@ class VehicleModelVOEncoder(ModelEncoder):
 class AutomobileVOEncoder(ModelEncoder):
     model = AutomobileVO
     properties = [
-        "color",
-        "year",
+        "id",
         "vin",
-        "model",
     ]
-    encoders = {
-        "model": VehicleModelVOEncoder(),
-    }
+
+class CustomerListEncoder(ModelEncoder):
+    model = Customer
+    properties = [
+        "id",
+        "name",
+    ]
 
 
 class CustomerDetailEncoder(ModelEncoder):
@@ -42,58 +44,28 @@ class CustomerDetailEncoder(ModelEncoder):
         "phone_number",
     ]
 
-class CustomerListEncoder(ModelEncoder):
-    model = Customer
+
+class SalesPersonEncoder(ModelEncoder):
+    model = SalesPerson
     properties = [
         "id",
         "name",
-        "address",
-        "phone_number",
-    ]
-
-class SalesPersonsListEncoder(ModelEncoder):
-    model = SalesPerson
-    properties = [
-        "name",
         "employee_number",
     ]
 
-class SalesPersonDetailEncoder(ModelEncoder):
-    model = SalesPerson
-    properties = [
-        "name",
-        "employee_number",
-    ]
 
 
 class SalesListEncoder(ModelEncoder):
     model = Sale
     properties = [
-        "price",
-        "automobile",
+        "id",
         "sales_person",
         "customer",
-    ]
-    encoders = {
-        "automobile": AutomobileVOEncoder(),
-        "sales_person": SalesPersonDetailEncoder(),
-        "customer": CustomerDetailEncoder(),
-    }
-
-    # def get_extra_data(self, o):
-    #     return {"sales_person": o.sales_person.name}
-
-
-class SalesDetailEncoder(ModelEncoder):
-    model = Sale
-    properties = [
-        "price",
         "automobile",
-        "sales_person",
-        "customer",
+        "price",
     ]
     encoders = {
+        "sales_person": SalesPersonEncoder(),
+        "customer": CustomerListEncoder(),
         "automobile": AutomobileVOEncoder(),
-        "sales_person": SalesPersonDetailEncoder(),
-        "customer": CustomerDetailEncoder(),
     }
