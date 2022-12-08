@@ -14,10 +14,8 @@ def list_appointments(request, vin_id=None):
     if request.method == "GET":
         if vin_id is not None:
             appointments = ServiceAppointment.objects.filter(vehicle_vin=vin_id)
-            print(appointments)
         else:
             appointments = ServiceAppointment.objects.all()
-            print(appointments)
         return JsonResponse (
             {"appointments": appointments},
             encoder=ServiceAppointmentEncoder
@@ -41,7 +39,6 @@ def list_appointments(request, vin_id=None):
 def create_appointment(request):
     if request.method == "POST":
         content = json.loads(request.body)
-        print(content)
         appointment = ServiceAppointment.objects.create(**content)
         return JsonResponse(
             appointment,
@@ -70,6 +67,16 @@ def list_technicians(request):
             technician,
             encoder=TechnicianEncoder,
             safe=False,
+        )
+
+@require_http_methods(["GET"])
+def show_technician(request, pk):
+    if request.method == "GET":
+        technician = Technician.objects.get(id=pk)
+        return JsonResponse(
+            technician,
+            encoder=TechnicianEncoder,
+            safe=False
         )
 
 @require_http_methods(["POST"])

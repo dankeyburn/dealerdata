@@ -7,12 +7,12 @@ class AutomobileVOEncoder(ModelEncoder):
 
 class TechnicianEncoder(ModelEncoder):
     model = Technician
-    properties = ["name", "employee_number"]
+    properties = ["name", "employee_number", "id"]
 
 
 class ServiceAppointmentEncoder(ModelEncoder):
     model = ServiceAppointment
-    properties = ["vehicle_vin", "appointment_datetime", "appointment_reason", "owner", "assigned_technician"]
+    properties = ["id", "vehicle_vin", "appointment_datetime", "appointment_reason", "owner", "technician"]
     encoders = {
-        "assigned_technician": TechnicianEncoder()
+        "technician": TechnicianEncoder()
     }

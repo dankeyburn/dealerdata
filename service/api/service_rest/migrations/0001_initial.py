@@ -52,7 +52,7 @@ class Migration(migrations.Migration):
                 ('vehicle_vin', models.CharField(max_length=17)),
                 ('appointment_datetime', models.DateTimeField()),
                 ('appointment_reason', models.TextField()),
-                ('assigned_technician', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='technicians', to='service_rest.technician')),
+                ('technician', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='technicians', to='service_rest.technician')),
                 ('customer_name', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='customers', to='service_rest.customervo')),
             ],
         ),

@@ -5,6 +5,7 @@ from .views import (
     create_appointment,
     list_technicians,
     create_technician,
+    show_technician,
 )
 
 urlpatterns = [
@@ -28,4 +29,10 @@ urlpatterns = [
         create_technician,
         name="create_technician",
     ),
+    path(
+        "technicians/<int:pk>",
+        show_technician,
+        name="show_technician",
+    ),
+
 ]

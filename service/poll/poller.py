@@ -27,7 +27,7 @@ def appointment_poller():
                 "appointment_datetime": service["appointment_datetime"],
                 "appointment_reason": service["appointment_reason"],
                 "customer_name": service["customer_name"],
-                "assigned_technician": service["assigned_technician"],
+                "technician": service["technician"],
             },
         )
 

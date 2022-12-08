@@ -9,7 +9,7 @@ class ServiceAppointmentForm extends React.Component {
             appointment_datetime: '',
             appointment_reason: '',
             owner: '',
-            assigned_technician: []
+            technician: []
         };
 
         this.handleVINChange = this.handleVINChange.bind(this);
@@ -44,7 +44,7 @@ class ServiceAppointmentForm extends React.Component {
                 appointment_datetime: '',
                 appointment_reason: '',
                 owner: '',
-                assigned_technician: []
+                technician: []
             };
             this.setState(cleared);
         }
@@ -72,7 +72,7 @@ class ServiceAppointmentForm extends React.Component {
 
     handleTechnicianChange(event) {
         const value = event.target.value;
-        this.setState({assigned_technician: value})
+        this.setState({technician: value})
     }
 
     async componentDidMount() {
@@ -80,9 +80,9 @@ class ServiceAppointmentForm extends React.Component {
 
         const response = await fetch(url);
         if (response.ok) {
-            const data = await response.json();
-            console.log(`data: ${data}`)
-            this.setState({assigned_technician: data});  // error: trying to set state to multiple things
+            const data = await response.json();  // must parse!
+            console.log(`data: ${data["name"]}`) // [object Object],[object Object],[object Object]
+            this.setState({technician: data});  // error: trying to set state to multiple things
             }
           }
 
@@ -90,7 +90,7 @@ class ServiceAppointmentForm extends React.Component {
 
     render() {
 
-        console.log(`this.state.assigned_technician: ${this.state.assigned_technician}`)
+        console.log(`this.state.technician: ${this.state.technician}`)
         return (
             <div className="row">
               <div className="offset-3 col-6">
@@ -114,9 +114,9 @@ class ServiceAppointmentForm extends React.Component {
                       <label htmlFor="owner">owner</label>
                     </div>
                     <div className="mb-3">
-                        <select value={this.state.assigned_technician} onChange={this.handleTechnicianChange} required name="assigned_technician" id="assigned_technician" className="form-select">
+                        <select value={this.state.technician} onChange={this.handleTechnicianChange} required name="technician" id="technician" className="form-select">
                             <option value="">assign a technician</option>
-                            {/* {this.state.assigned_technician.map(technician => {
+                            {/* {this.state.technician.map(technician => {
                                 return(
                                     <option key={technician.id} value={technician.id}>
                                         {technician.name}
