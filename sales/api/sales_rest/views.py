@@ -1,101 +1,50 @@
 from django.shortcuts import render
 from .models import Sale, SalesPerson, Customer, AutomobileVO
 from django.views.decorators.http import require_http_methods
-# from .encoders import SalesPersonEncoder, SalesListEncoder, CustomerListEncoder, CustomerDetailEncoder, AutomobileVOEncoder, SalesDetailEncoder
 from django.http import JsonResponse
 import json
+from .encoders import AutomobileVOEncoder, CustomerDetailEncoder, CustomerListEncoder, SalesPersonDetailEncoder, SalesPersonsListEncoder, SalesListEncoder, SalesDetailEncoder
 
 def api_list_sales(request):
-    response = []
     sales = Sale.objects.all()
-    for sale in sales:
-        response.append(
-            {
-                "price": sale.price,
-                "automobile": sale.automobile.vin,
-                "sales_person": {
-                    "name": sale.sales_person.name,
-                    "employee_number": sale.sales_person.employee_number,
-                },
-                "customer": {
-                    "name": sale.customer.name,
-                    "address": sale.customer.address,
-                    "phone_number": sale.customer.phone_number,
-                },
-            }
-        )
-    return JsonResponse({"sales": response})
+    return JsonResponse(
+        {"sales": sales},
+        encoder=SalesListEncoder)
 
 
 def api_show_sale(request, pk):
     sale = Sale.objects.get(pk=pk)
     return JsonResponse(
-    {
-        "price": sale.price,
-        "automobile": {
-            "color": sale.automobile.color,
-            "year": sale.automobile.year,
-            "vin": sale.automobile.vin,
-            "model": {
-                "name": sale.automobile.model.name,
-                "picturl_url": sale.automobile.model.picture_url,
-                "manufacturer": {
-                    "name": sale.automobile.model.manufacturer.name,
-                },
-            },
-        },
-        "sales_person": sale.sales_person.name,
-        "customer": sale.customer.name,
-    }
-    )
+        {"sale": sale},
+        encoder=SalesDetailEncoder)
 
 
 def api_list_customers(request):
-    response = []
     customers = Customer.objects.all()
-    for customer in customers:
-        response.append(
-            {
-                "name": customer.name,
-                "address": customer.address,
-                "phone_number": customer.phone_number,
-            }
-        )
-    return JsonResponse({"customers": response})
+    return JsonResponse(
+        {"customers": customers},
+        encoder=CustomerListEncoder)
 
 
 def api_show_customer(request, pk):
     customer = Customer.objects.get(pk=pk)
     return JsonResponse(
-    {
-        "name": customer.name,
-        "address": customer.address,
-        "phone_number": customer.phone_number,
-    }
-    )
+        {"customer": customer},
+        encoder=CustomerDetailEncoder)
 
 
 def api_list_sales_persons(request):
-    response = []
     sales_persons = SalesPerson.objects.all()
-    for sales_person in sales_persons:
-        response.append(
-            {
-                "name": sales_person.name,
-                "employee_number": sales_person.employee_number,
-            }
-        )
-    return JsonResponse({"sales_persons": response})
+    return JsonResponse(
+        {"sales_persons": sales_persons},
+        encoder=SalesPersonsListEncoder)
 
 
 def api_show_sales_person(request, pk):
     sales_person = SalesPerson.objects.get(pk=pk)
     return JsonResponse(
-    {
-        "name": sales_person.name,
-        "employee_number": sales_person.employee_number,
-    }
-    )
+    {"sales_person": sales_person},
+    encoder=SalesPersonDetailEncoder)
 
 # @require_http_methods(["GET", "POST"])
 # def api_list_sales(request):
