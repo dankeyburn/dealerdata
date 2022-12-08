@@ -3,7 +3,7 @@ from .models import AutomobileVO, Technician, ServiceAppointment
 
 class AutomobileVOEncoder(ModelEncoder):
     model = AutomobileVO
-    properties = ["closet_name", "bin_size", "bin_number", "import_href"]
+    properties = ["color", "year", "vin", "model"]
 
 class TechnicianEncoder(ModelEncoder):
     model = Technician
@@ -12,7 +12,7 @@ class TechnicianEncoder(ModelEncoder):
 
 class ServiceAppointmentEncoder(ModelEncoder):
     model = ServiceAppointment
-    properties = ["vehicle_vin", "appointment_datetime", "appointment_reason", "customer_name", "assigned_technician"]
+    properties = ["vehicle_vin", "appointment_datetime", "appointment_reason", "owner", "assigned_technician"]
     encoders = {
         "assigned_technician": TechnicianEncoder()
     }

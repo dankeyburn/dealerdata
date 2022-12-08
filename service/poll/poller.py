@@ -13,29 +13,50 @@ django.setup()
 # from service_rest.models import Something
 from service_rest.models import ServiceAppointment
 
+
+def appointment_poller():
+    # Write your polling logic, here
+    url = 'http://localhost:8080/services'
+    resp = requests.get(url)
+    content = json.loads(resp.content)
+    for service in content["services"]:
+        ServiceAppointment.objects.update_or_create(
+            import_href=service["href"],
+            defaults={
+                "vehicle_vin": service["vehicle_vin"],
+                "appointment_datetime": service["appointment_datetime"],
+                "appointment_reason": service["appointment_reason"],
+                "customer_name": service["customer_name"],
+                "assigned_technician": service["assigned_technician"],
+            },
+        )
+
+
+# def customer_poller():
+#     # Write your polling logic, here
+#     url = 'http://localhost:8090/api/customers'
+#     resp = requests.get(url)
+#     content = json.loads(resp.content)
+#     for customer in content["customers"]:
+#         CustomerVO.objects.update_or_create(
+#             import_href=customer["href"],
+#             defaults={
+#                 "name": customer["name"],
+#                 "address": customer["address"],
+#                 "phone_number": customer["phone_number"],
+#             },
+#         )
+
+
 def poll():
     while True:
-        print('Service poller polling for data')
+        print('Sales poller polling for data')
         try:
-            # Write your polling logic, here
-            url = 'http://localhost:8080/services'
-            resp = requests.get(url)
-            content = json.loads(resp.content)
-            for service in content["services"]:
-                ServiceAppointment.objects.update_or_create(
-                    import_href=service["href"],
-                    defaults={
-                        "vehicle_vin": service["vehicle_vin"],
-                        "appointment_datetime": service["appointment_datetime"],
-                        "appointment_reason": service["appointment_reason"],
-                        "customer_name": service["customer_name"],
-                        "assigned_technician": service["assigned_technician"],
-                    },
-                )
+            appointment_poller(),
+            # customer_poller()
         except Exception as e:
             print(e, file=sys.stderr)
-        time.sleep(60)
-
+        time.sleep(180)
 
 if __name__ == "__main__":
     poll()

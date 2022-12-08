@@ -32,10 +32,10 @@ function Nav() {
               <NavLink className="nav-link" to="/automobiles/create/">Create Automobile</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/services/create/">Enter a Service Appointment</NavLink>
+              <NavLink className="nav-link" to="/services/create/">Create a Service Appointment</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/services/list/">List of  Appointments</NavLink>
+              <NavLink className="nav-link" to="/services/">List of Service Appointments</NavLink>
             </li>
             <li className="nav-item">
               <NavLink className="nav-link" to="/services/vehicle_history/">View Service History</NavLink>

@@ -12,24 +12,24 @@ from sales_rest.models import AutomobileVO
 # Import models from sales_rest, here.
 # from sales_rest.models import Something
 
+def get_automobiles():
+    url = 'http://inventory-api:8000/api/automobiles'
+    response = requests.get(url)
+    content = json.loads(response.content)
+    print(content)
+    for auto in content["autos"]:
+        AutomobileVO.objects.update_or_create(
+            color=auto["color"],
+            year=auto["year"],
+            vin=auto["vin"],
+        )
+
+
 def poll():
     while True:
         print('Sales poller polling for data')
         try:
-            url = 'http://inventory-api:8000/api/automobiles'
-            response = requests.get(url)
-            content = json.loads(response.content)
-            for auto in content["autos"]:
-                AutomobileVO.objects.update_or_create(
-                    importvin=auto['vin'],
-                    import_href=auto["href"],
-                    defaults={
-                        "color": auto["color"],
-                        "year": auto["year"],
-                        "vin": auto["vin"],
-                        "model": auto["model"],
-                    },
-            )
+            get_automobiles()
         except Exception as e:
             print(e, file=sys.stderr)
         time.sleep(60)
@@ -37,4 +37,3 @@ def poll():
 
 if __name__ == "__main__":
     poll()
-

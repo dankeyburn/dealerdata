@@ -67,4 +67,3 @@ class Sale(models.Model):
         related_name="sale",
         on_delete=models.CASCADE,
     )
-

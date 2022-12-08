@@ -36,11 +36,6 @@ class AutomobileVO(models.Model):
     def get_api_url(self):
         return reverse("api_vehicle_model", kwargs={"pk": self.id})
 
-class CustomerVO(models.Model):
-    name = models.CharField(max_length=200)
-    address = models.CharField(max_length=200)
-    phone_number = models.IntegerField()
-
 class Technician(models.Model):
     name = models.CharField(max_length=200)
     employee_number = models.CharField(max_length=50)
@@ -49,13 +44,36 @@ class ServiceAppointment(models.Model):
     vehicle_vin = models.CharField(max_length=17)
     appointment_datetime = models.DateTimeField()
     appointment_reason = models.TextField()
-    customer_name = models.ForeignKey(
-        CustomerVO,
-        related_name="customers",
-        on_delete=models.CASCADE,
-    )
+    owner = models.CharField(max_length=200)
+    #isVIP?
     assigned_technician = models.ForeignKey(
         Technician,
         related_name="technicians",
+        on_delete=models.CASCADE,
+    )
+
+    def get_api_url(self):
+        return reverse("api_hat_details", kwargs={"pk": self.pk})
+
+    def __str__(self):
+        return f"{self.id}, {self.style_name}"
+
+class SalesPersonVO(models.Model):
+    name = models.CharField(max_length=100)
+    employee_number = models.IntegerField()
+
+    def __str__(self):
+        return f"{self.id}, {self.name}"
+
+class SaleVO(models.Model):
+    price = models.CharField(max_length=20)
+    automobile = models.ForeignKey(
+        AutomobileVO,
+        related_name="sale",
+        on_delete=models.CASCADE,
+    )
+    sales_person = models.ForeignKey(
+        SalesPersonVO,
+        related_name="sale",
         on_delete=models.CASCADE,
     )
