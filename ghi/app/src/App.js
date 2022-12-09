@@ -4,6 +4,8 @@ import Nav from './Nav';
 import SalesList from './SalesList';
 import SaleForm from './SaleForm';
 import SalesPersonHistory from './SalesPersonHistory';
+import SalesPersonForm from './SalesPersonForm';
+import CustomerForm from './CustomerForm';
 
 function App(props) {
   if (props.sales === undefined) {
@@ -23,6 +25,8 @@ function App(props) {
       <SalesList sales={props.sales} />
       <SaleForm />
       <SalesPersonHistory sales={props.sales}/>
+      <SalesPersonForm />
+      <CustomerForm />
     </div>
     </>
   );
