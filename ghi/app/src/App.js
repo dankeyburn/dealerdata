@@ -6,6 +6,8 @@ import SaleForm from './SaleForm';
 import SalesPersonHistory from './SalesPersonHistory';
 import SalesPersonForm from './SalesPersonForm';
 import CustomerForm from './CustomerForm';
+import ManufacturerForm from './ManufacturerForm';
+import ManufacturerList from './ManufacturerList';
 
 function App(props) {
   if (props.sales === undefined) {
@@ -14,20 +16,19 @@ function App(props) {
   return (
     <>
     <BrowserRouter>
-    <Nav />
-    <div className="container">
+      <Nav />
+      <div className="container">
       <Routes>
-        <Route path="/" element={<MainPage />} />
+          <Route path="/" element={<MainPage />} />
+          <Route path="/sales/" element={<SalesList sales={props.sales} />} />
+          <Route path="/sales/new/" element={<SaleForm />} />
+          <Route path="/salesperson/new/" element={<SalesPersonForm />} />
+          <Route path="/customer/new" element={<CustomerForm />} />
+          <Route path="/manufacturers/new" element={<ManufacturerForm />} />
+          <Route path="/manufacturers/" element={<ManufacturerList />} />
       </Routes>
     </div>
     </BrowserRouter>
-    <div className='container'>
-      <SalesList sales={props.sales} />
-      <SaleForm />
-      <SalesPersonHistory sales={props.sales}/>
-      <SalesPersonForm />
-      <CustomerForm />
-    </div>
     </>
   );
 }

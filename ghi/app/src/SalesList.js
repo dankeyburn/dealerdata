@@ -7,8 +7,6 @@ function SalesList(props) {
                     <th>Vin Number</th>
                     <th>Customer ID</th>
                     <th>Customer Name</th>
-                    <th>address</th>
-                    <th>phone number</th>
                     <th>sales person</th>
                 </tr>
                 </thead>
@@ -20,8 +18,7 @@ function SalesList(props) {
                         <td>{ sale.automobile.vin }</td>
                         <td>{ sale.customer.id }</td>
                         <td>{ sale.customer.name }</td>
-                        <td>{ sale.customer.address }</td>
-                        <td>{ sale.customer.phone_number }</td>
+
                         <td>{ sale.sales_person.name }</td>
                     </tr>
                     );
