@@ -9,7 +9,7 @@ import json
 
 # Create your views here.
 
-@require_http_methods(["GET"])
+@require_http_methods(["GET", "POST"])
 def list_appointments(request, vin_id=None):
     if request.method == "GET":
         if vin_id is not None:
@@ -19,6 +19,14 @@ def list_appointments(request, vin_id=None):
         return JsonResponse (
             {"appointments": appointments},
             encoder=ServiceAppointmentEncoder
+        )
+    elif request.method == "POST":
+        content = json.loads(request.body)
+        appointment = ServiceAppointment.objects.create(**content)
+        return JsonResponse(
+            appointment,
+            encoder=ServiceAppointmentEncoder,
+            safe=False
         )
     else:
         content = json.loads(request.body)

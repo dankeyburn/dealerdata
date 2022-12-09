@@ -21,35 +21,35 @@ export default function ServiceAppointmentList() {
 
     return (
         <>
-        <table className="table table-striped">
-        <thead>
-            <tr>
-            <th>Vehicle VIN</th>
-            <th>Appointment Date & Time</th>
-            <th>Appointment Reason</th>
-            <th>Owner</th>
-            <th>Assigned Technician</th>
-            <th>      </th>
-            </tr>
-        </thead>
-        <tbody>
-            {appointments.map((appointment) => {
-                return (
-                    <tr key={appointment.id}>
-                        <td>{ appointment.vehicle_vin }</td>
-                        <td>{ appointment.appointment_datetime }</td>
-                        <td>{ appointment.appointment_reason }</td>
-                        <td>{ appointment.owner }</td>
-                        <td>{ appointment.technician.name }</td>
-                        <td>
-                            <button onClick={()=> handleDelete(appointment.id)}>Delete</button>
-                        </td>
+            <table className="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Vehicle VIN</th>
+                        <th>Appointment Date & Time</th>
+                        <th>Appointment Reason</th>
+                        <th>Owner</th>
+                        <th>Assigned Technician</th>
+                        <th>      </th>
                     </tr>
-                );
-            })}
-        </tbody>
-        </table>
-        <a href="/services/create/"><button>ADD A NEW SERVICE APPOINTMENT</button> </a>
+                </thead>
+                <tbody>
+                    {appointments.map(appointment => {
+                        return (
+                            <tr key={appointment.id}>
+                                <td>{ appointment.vehicle_vin }</td>
+                                <td>{ appointment.appointment_datetime }</td>
+                                <td>{ appointment.appointment_reason }</td>
+                                <td>{ appointment.owner }</td>
+                                <td>{ appointment.technician.name }</td>
+                                <td>
+                                    <button onClick={()=> handleDelete(appointment.id)}>Delete</button>
+                                </td>
+                            </tr>
+                        );
+                    })}
+                </tbody>
+            </table>
+            <a href="/services/create/"><button>ADD A NEW SERVICE APPOINTMENT</button> </a>
         </>
     );
 }
