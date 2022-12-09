@@ -47,6 +47,9 @@ export default function CreateAutomobile() {
                 model: ''
             })
         }
+        else {
+            console.log(res.body)
+        }
     }
 
     return (

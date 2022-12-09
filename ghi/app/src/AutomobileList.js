@@ -3,11 +3,17 @@ import {useState, useEffect} from 'react';
 export default function AutomobileList() {
     const [automobiles, setAutomobiles] = useState([])
 
+
+    const handleDelete = async (id) => {
+        const res = await fetch(`http://localhost:8100/api/automobiles/${automobiles.model.id}/`, { method:"DELETE"})
+        const data = await res.json()
+    }
+
     useEffect(() => {
         if (automobiles.length === 0) {
             async function testData() {
-                const resp = await fetch('http://localhost:8100/api/automobiles/')
-                const data = await resp.json()
+                const res = await fetch('http://localhost:8100/api/automobiles/')
+                const data = await res.json()
                 setAutomobiles(data.autos)
             }
             testData()
@@ -34,6 +40,9 @@ export default function AutomobileList() {
                                 <td>{ auto.year }</td>
                                 <td>{ auto.vin }</td>
                                 <td>{ auto.model.name }</td>
+                                <td>
+                                    <button onClick={()=> handleDelete(auto.model.id)}>Delete</button>
+                                </td>
                             </tr>
                         )
                     })}

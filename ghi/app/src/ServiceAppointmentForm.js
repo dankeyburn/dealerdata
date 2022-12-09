@@ -8,7 +8,7 @@ export default function CreateServiceAppointment() {
         appointment_datetime: '',
         appointment_reason: '',
         owner: '',
-        technician: ''
+        technician_id: ''
     })
 
     useEffect(() => {
@@ -48,8 +48,11 @@ export default function CreateServiceAppointment() {
                 appointment_datetime: '',
                 appointment_reason: '',
                 owner: '',
-                technician: ''
+                technician_id: ''
             })
+        }
+        else {
+            console.log(res.body)
         }
     }
 
@@ -74,7 +77,7 @@ export default function CreateServiceAppointment() {
                     <label htmlFor="owner">Vehicle Owner</label>
                 </div>
                 <div className="mb-3">
-                    <select value={appointment.technician} onChange={(e) => setAppointment({ ...appointment, technician: e.target.value })} placeholder="technician" required name="technician" id="technician" className="form-select">
+                    <select value={appointment.technician_id} onChange={(e) => setAppointment({ ...appointment, technician_id: e.target.value })} placeholder="Technician_i=_d" required name="technician_id" id="technician_id" className="form-select">
                         <option value="">Assign a Technician</option>
                         {technician?.map(technician => {
                             return(

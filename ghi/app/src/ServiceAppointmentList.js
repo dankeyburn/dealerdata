@@ -10,12 +10,12 @@ export default function ServiceAppointmentList() {
 
     useEffect(() => {
         if (appointments.length === 0) {
-            async function testData() {
+            async function appointmentData() {
                 const res = await fetch('http://localhost:8080/services/')
                 const data = await res.json()
                 setAppointments(data.appointments)
             }
-            testData()
+            appointmentData()
         }
     }, [appointments])
 
