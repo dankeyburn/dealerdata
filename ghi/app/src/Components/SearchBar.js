@@ -1,26 +1,45 @@
 import {useState, useEffect} from 'react';
 
-export default function ServiceAppointmentList() {
-    const [appointments, setAppointments] = useState([])
+export default function SearchBar() {
+    const [searchInput, setSearchInput] = useState("");
+    const [appointments, setAppointments] = useState([]);
 
-    const handleDelete = async (id) => {
-        const res = await fetch(`http://localhost:8080/services/${appointments.id}/`, { method:"DELETE"})
-        const data = await res.json()
-    }
 
     useEffect(() => {
         if (appointments.length === 0) {
-            async function testData() {
+            async function appointmentData() {
                 const res = await fetch('http://localhost:8080/services/')
                 const data = await res.json()
+                console.log(data)
                 setAppointments(data.appointments)
             }
-            testData()
+            appointmentData()
         }
     }, [appointments])
 
+    const handleSubmit = (e) => {
+        appointments.filter((vin) => {
+            return vin.match(searchInput)
+        })
+    }
+
+    const handleChange = (e) => {
+        // e.preventDefault();
+        setSearchInput(e.target.value);
+    };
+
     return (
         <>
+            <form onSubmit={handleSubmit}>
+                <input
+                    className="search"
+                    type="text"
+                    placeholder="Enter VIN"
+                    onChange={handleChange}
+                    value={searchInput}
+                />
+                <button className="btn btn-primary">Search</button>
+            </form>
             <table className="table table-striped">
                 <thead>
                     <tr>
@@ -33,7 +52,7 @@ export default function ServiceAppointmentList() {
                     </tr>
                 </thead>
                 <tbody>
-                    {appointments.map(appointment => {
+                {appointments.map(appointment => {
                         return (
                             <tr key={appointment.id}>
                                 <td>{ appointment.vehicle_vin }</td>
@@ -41,15 +60,11 @@ export default function ServiceAppointmentList() {
                                 <td>{ appointment.appointment_reason }</td>
                                 <td>{ appointment.owner }</td>
                                 <td>{ appointment.technician.name }</td>
-                                <td>
-                                    <button onClick={()=> handleDelete(appointment.id)}>Delete</button>
-                                </td>
                             </tr>
                         );
                     })}
                 </tbody>
             </table>
-            <a href="/services/create/"><button>ADD A NEW SERVICE APPOINTMENT</button> </a>
         </>
-    );
+    )
 }

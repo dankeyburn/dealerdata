@@ -1,4 +1,4 @@
-import React, {useState,useEffect} from 'react'
+import React, {useState, useEffect} from 'react'
 
 export default function CreateVehicleModel() {
     let [manufacturer, setManufacturer] = useState([])
@@ -15,7 +15,7 @@ export default function CreateVehicleModel() {
                 const res = await fetch(`http://localhost:8100/api/manufacturers/`)
                 const data = await res.json()
                 console.log(data.manufacturers)
-                setVehicleModel(data.manufacturers)
+                setManufacturer(data.manufacturers)
             }
             manufacturerData()
         }
@@ -62,9 +62,9 @@ export default function CreateVehicleModel() {
                 <div className="mb-3">
                     <select value={vehicleModel.manufacturer} onChange={(event) => setVehicleModel({ ...vehicleModel, manufacturer: event.target.value })} placeholder="manufacturer" required name="manufacturer" id="manufacturer" className="form-select">
                         <option value="">Assign a Manufacturer</option>
-                        {manufacturer.map(manufacturer => {
+                        {manufacturer?.map(manufacturer => {
                             return(
-                                <option key={manufacturer.name} value={manufacturer.name}>
+                                <option key={manufacturer.id} value={manufacturer.id}>
                                     {manufacturer.name}
                                 </option>
                             );
