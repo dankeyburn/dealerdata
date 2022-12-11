@@ -31,7 +31,7 @@ def api_list_sales(request, sales_person_employee_number=None):
             content = json.loads(request.body)
 
             sales_person = content["sales_person"]
-            sp = SalesPerson.objects.get(name=sales_person)
+            sp = SalesPerson.objects.get(id=sales_person)
             content["sales_person"] = sp
 
             customer_id = content["customer"]
@@ -41,7 +41,7 @@ def api_list_sales(request, sales_person_employee_number=None):
             vin = content["automobile"]
             auto = AutomobileVO.objects.get(vin=vin)
             content["automobile"] = auto
-            
+
             price = content["price"]
             sale = Sale.objects.create(**content)
             return JsonResponse(

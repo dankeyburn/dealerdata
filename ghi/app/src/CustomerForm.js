@@ -6,7 +6,7 @@ class CustomerForm extends React.Component {
     this.state = {
         name: '',
         address: '',
-        phone_numer: '',
+        phone_number: '',
         hasSignedUp: false,
     }
 
@@ -39,12 +39,13 @@ class CustomerForm extends React.Component {
         'Content-Type': 'application/json',
       },
     };
+
     const customer_Response = await fetch(customerUrl, fetchOptions);
     if (customer_Response.ok) {
       this.setState({
         name: '',
         address: '',
-        phone_numer: '',
+        phone_number: '',
         hasSignedUp: true,
       });
     }
@@ -62,7 +63,7 @@ class CustomerForm extends React.Component {
 
   handleChangePhoneNumber(event) {
     const value = event.target.value;
-    this.setState({ phone_numer: value });
+    this.setState({ phone_number: value });
   }
 
   render() {

@@ -74,6 +74,7 @@ class SalesForm extends React.Component {
         const salesPersonResponse = await fetch(salesPersonUrl);
         if (autoResponse.ok) {
           const data = await autoResponse.json();
+          console.log(data)
             this.setState({automobiles: data.autos})
             console.log(data)
          }
@@ -124,7 +125,7 @@ class SalesForm extends React.Component {
                   <option value="">Choose a customer</option>
                   {this.state.customers.map(customer => {
                     return (
-                    <option key={customer.name} value={customer.name}>
+                    <option key={customer.id} value={customer.id}>
                         {customer.name}
                     </option>
                     );
