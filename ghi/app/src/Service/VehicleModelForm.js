@@ -59,10 +59,10 @@ export default function CreateVehicleModel() {
             required
             type="text"
             name="name"
-            id="vehicle_vin"
+            id="name"
             className="form-control"
           />
-          <label htmlFor="name">Vehicle VIN</label>
+          <label htmlFor="name">Vehicle Name</label>
         </div>
         <div className="form-floating mb-3">
           <input
@@ -84,17 +84,17 @@ export default function CreateVehicleModel() {
         </div>
         <div className="mb-3">
           <select
-            value={vehicleModel.manufacturer_id}
+            value={vehicleModel.manufacturer}
             onChange={(e) =>
               setVehicleModel({
                 ...vehicleModel,
                 manufacturer_id: e.target.value,
               })
             }
-            placeholder="Manufacturer_id"
+            placeholder="Manufacturer"
             required
-            name="manufacturer_id"
-            id="manufacturer_id"
+            name="manufacturer"
+            id="manufacturer"
             className="form-select"
           >
             <option value="">Assign a Manufacturer</option>

@@ -7,15 +7,17 @@ export default function CreateServiceAppointment() {
     vehicle_vin: "",
     appointment_datetime: "",
     appointment_reason: "",
+    appointment_finish: "",
     owner: "",
+    is_vip: "",
     technician_id: "",
   });
 
   useEffect(() => {
     if (technician.length === 0) {
       async function testData() {
-        const resp = await fetch(`http://localhost:8080/technicians/`);
-        const data = await resp.json();
+        const res = await fetch(`http://localhost:8080/technicians/`);
+        const data = await res.json();
         setTechnician(data);
       }
       testData();
@@ -44,11 +46,21 @@ export default function CreateServiceAppointment() {
         vehicle_vin: "",
         appointment_datetime: "",
         appointment_reason: "",
+        appointment_finish: "",
         owner: "",
+        is_vip: "",
         technician_id: "",
       });
     }
   };
+
+  async function autoData() {
+    const res = await fetch`http://localhost:8100/api/automobiles/`;
+    const data = await res.json();
+    console.log(`data: ${data.autos}`);
+    // setAppointment({is_vip: ""})
+  }
+  autoData();
 
   return (
     <>

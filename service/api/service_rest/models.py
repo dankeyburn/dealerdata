@@ -47,8 +47,9 @@ class ServiceAppointment(models.Model):
     vehicle_vin = models.CharField(max_length=17)
     appointment_datetime = models.DateTimeField()
     appointment_reason = models.TextField()
+    appointment_finish = models.BooleanField(default=False)
     owner = models.CharField(max_length=200)
-    #isVIP?
+    is_vip = models.BooleanField(default=False)
     technician = models.ForeignKey(
         Technician,
         related_name="technicians",
