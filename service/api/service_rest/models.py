@@ -58,3 +58,6 @@ class ServiceAppointment(models.Model):
 
     def __str__(self):
         return f"{self.id}, {self.vehicle_vin}"
+
+    def get_api_url(self):
+        return reverse("list_appointments", kwargs={"id": self.id})

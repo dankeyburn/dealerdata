@@ -15,6 +15,11 @@ urlpatterns = [
         name="list_appointments",
     ),
     path(
+        "services/<int:pk>/",
+        list_appointments,
+        name="list_appointments",
+    ),
+    path(
         "services/create/",
         create_appointment,
         name="create_appointment",

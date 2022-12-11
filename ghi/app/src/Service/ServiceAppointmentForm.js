@@ -7,9 +7,9 @@ export default function CreateServiceAppointment() {
     vehicle_vin: "",
     appointment_datetime: "",
     appointment_reason: "",
-    appointment_finish: "",
+    appointment_finish: false,
     owner: "",
-    is_vip: "",
+    is_vip: false,
     technician_id: "",
   });
 
@@ -46,9 +46,9 @@ export default function CreateServiceAppointment() {
         vehicle_vin: "",
         appointment_datetime: "",
         appointment_reason: "",
-        appointment_finish: "",
+        appointment_finish: false,
         owner: "",
-        is_vip: "",
+        is_vip: false,
         technician_id: "",
       });
     }

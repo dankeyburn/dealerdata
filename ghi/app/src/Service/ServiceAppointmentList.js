@@ -11,6 +11,14 @@ export default function ServiceAppointmentList() {
     const data = await res.json();
   };
 
+  const handleFinish = async (id) => {
+    const res = await fetch(
+      `http://localhost:8080/services/${appointments.id}/`,
+      { method: "PUT" }
+    );
+    const data = await res.json();
+  };
+
   useEffect(() => {
     if (appointments.length === 0) {
       async function appointmentData() {
@@ -21,6 +29,12 @@ export default function ServiceAppointmentList() {
       appointmentData();
     }
   }, [appointments]);
+
+  const isFinished = (appointment) => {
+    if (appointment.appointment_finish === false) {
+      return appointment;
+    }
+  };
 
   return (
     <>
@@ -46,7 +60,10 @@ export default function ServiceAppointmentList() {
                 <td>{appointment.appointment_datetime}</td>
                 <td>{appointment.technician.name}</td>
                 <td>{appointment.appointment_reason}</td>
-                <td> cancel | Finished</td>
+                <td>
+                  <button onClick={handleDelete}>Cancel</button>
+                  <button onClick={handleFinish}>Finished</button>
+                </td>
               </tr>
             );
           })}
