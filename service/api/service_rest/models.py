@@ -57,23 +57,3 @@ class ServiceAppointment(models.Model):
 
     def __str__(self):
         return f"{self.id}, {self.vehicle_vin}"
-
-class SalesPersonVO(models.Model):
-    name = models.CharField(max_length=100)
-    employee_number = models.IntegerField()
-
-    def __str__(self):
-        return f"{self.id}, {self.name}"
-
-class SaleVO(models.Model):
-    price = models.CharField(max_length=20)
-    automobile = models.ForeignKey(
-        AutomobileVO,
-        related_name="sale",
-        on_delete=models.CASCADE,
-    )
-    sales_person = models.ForeignKey(
-        SalesPersonVO,
-        related_name="sale",
-        on_delete=models.CASCADE,
-    )
