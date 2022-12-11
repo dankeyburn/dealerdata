@@ -15,7 +15,6 @@ export default function CreateAutomobile() {
       async function modelData() {
         const res = await fetch(`http://localhost:8100/api/models/`);
         const data = await res.json();
-        console.log(data.models);
         setModel(data.models);
       }
       modelData();
