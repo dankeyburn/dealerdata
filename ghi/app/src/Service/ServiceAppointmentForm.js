@@ -5,12 +5,12 @@ export default function CreateServiceAppointment() {
 
   let [appointment, setAppointment] = useState({
     vehicle_vin: "",
+    owner: "",
     appointment_datetime: "",
+    technician_id: "",
     appointment_reason: "",
     appointment_finish: false,
-    owner: "",
     is_vip: false,
-    technician_id: "",
   });
 
   useEffect(() => {
@@ -44,12 +44,12 @@ export default function CreateServiceAppointment() {
 
       setAppointment({
         vehicle_vin: "",
+        owner: "",
         appointment_datetime: "",
+        technician_id: "",
         appointment_reason: "",
         appointment_finish: false,
-        owner: "",
         is_vip: false,
-        technician_id: "",
       });
     }
   };
@@ -97,7 +97,7 @@ export default function CreateServiceAppointment() {
             id="appointment_datetime"
             className="form-control"
           />
-          <label htmlFor="appointment_datetime">Appointment Date & time</label>
+          <label htmlFor="appointment_datetime">Appointment Date & Time</label>
         </div>
         <div className="form-floating mb-3">
           <input

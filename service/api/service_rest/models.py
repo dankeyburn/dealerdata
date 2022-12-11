@@ -45,7 +45,7 @@ class Technician(models.Model):
 
 class ServiceAppointment(models.Model):
     vehicle_vin = models.CharField(max_length=17)
-    appointment_datetime = models.DateTimeField()
+    appointment_datetime = models.DateTimeField(null=True)
     appointment_reason = models.TextField()
     appointment_finish = models.BooleanField(default=False)
     owner = models.CharField(max_length=200)
@@ -60,4 +60,4 @@ class ServiceAppointment(models.Model):
         return f"{self.id}, {self.vehicle_vin}"
 
     def get_api_url(self):
-        return reverse("list_appointments", kwargs={"id": self.id})
+        return reverse("list_appointments", kwargs={"vin": self.id})

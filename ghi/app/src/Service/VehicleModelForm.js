@@ -47,7 +47,7 @@ export default function CreateVehicleModel() {
 
   return (
     <>
-      <h1>Create a New Vehicle Model</h1>
+      <h1>Create a Vehicle Model</h1>
       <form onSubmit={handleSubmit} id="create-appointment-form">
         <div className="form-floating mb-3">
           <input

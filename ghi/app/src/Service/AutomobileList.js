@@ -24,6 +24,7 @@ export default function AutomobileList() {
 
   return (
     <>
+      <h1>Vehicle Models</h1>
       <table className="table table-striped">
         <thead>
           <tr>
@@ -31,6 +32,7 @@ export default function AutomobileList() {
             <th>Year</th>
             <th>Vehicle VIN</th>
             <th>Model</th>
+            <th>Manufacturer</th>
           </tr>
         </thead>
         <tbody>
@@ -41,6 +43,7 @@ export default function AutomobileList() {
                 <td>{auto.year}</td>
                 <td>{auto.vin}</td>
                 <td>{auto.model.name}</td>
+                <td>{auto.model.manufacturer.name}</td>
               </tr>
             );
           })}
