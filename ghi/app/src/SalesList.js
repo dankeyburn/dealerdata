@@ -3,10 +3,10 @@ function SalesList(props) {
         <table className="table table-striped">
                 <thead>
                 <tr>
-                    <th>Price</th>
-                    <th>Vin Number</th>
-                    <th>Customer ID</th>
-                    <th>Customer Name</th>
+                    <th>price</th>
+                    <th>vin number</th>
+                    <th>customer id</th>
+                    <th>customer name</th>
                     <th>sales person</th>
                 </tr>
                 </thead>

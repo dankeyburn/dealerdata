@@ -26,7 +26,6 @@ class SalesForm extends React.Component {
         delete data.automobiles;
         delete data.sales_persons;
         delete data.customers;
-        console.log(data);
 
         const salesUrl = 'http://localhost:8090/api/sales/';
         const fetchConfig = {
@@ -74,9 +73,7 @@ class SalesForm extends React.Component {
         const salesPersonResponse = await fetch(salesPersonUrl);
         if (autoResponse.ok) {
           const data = await autoResponse.json();
-          console.log(data)
             this.setState({automobiles: data.autos})
-            console.log(data)
          }
         if (customerResponse.ok) {
         const data = await customerResponse.json();
@@ -85,7 +82,6 @@ class SalesForm extends React.Component {
         if (salesPersonResponse.ok) {
         const data = await salesPersonResponse.json();
             this.setState({sales_persons: data.sales_persons})
-            console.log(data)
         }
         }
 

@@ -13,7 +13,6 @@ async function loadSale() {
   const response = await fetch('http://localhost:8090/api/sales/');
   if (response.ok) {
     const data = await response.json();
-    console.log(data);
     root.render(
       <React.StrictMode>
         <App sales={data.sales} />

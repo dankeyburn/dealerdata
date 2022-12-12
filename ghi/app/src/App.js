@@ -3,7 +3,6 @@ import MainPage from './MainPage';
 import Nav from './Nav';
 import SalesList from './SalesList';
 import SaleForm from './SaleForm';
-import SalesPersonHistory from './SalesPersonHistory';
 import SalesPersonForm from './SalesPersonForm';
 import CustomerForm from './CustomerForm';
 import ManufacturerForm from './ManufacturerForm';

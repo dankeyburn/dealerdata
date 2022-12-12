@@ -73,32 +73,32 @@ class SalesPersonForm extends React.Component {
               <div className="card shadow">
                 <div className="card-body">
                   <form className={formClasses} onSubmit={this.handleSubmit} id="create-sales-person-form">
-                    <h1 className="card-title">It's New Sales Person Time!</h1>
+                    <h1 className="card-title">add new sales person here:</h1>
                     <p className="mb-3">
-                      Welcome, new sales person.
+                      welcome, new sales person.
                     </p>
 
                     <p className="mb-3">
-                      Now, tell us about yourself.
+                      input name and unique id:
                     </p>
                     <div className="row">
                       <div className="col">
                         <div className="form-floating mb-3">
                           <input onChange={this.handleChangeName} required placeholder="Your full name" type="text" id="name" name="name" className="form-control" />
-                          <label htmlFor="name">Your full name</label>
+                          <label htmlFor="name">full name</label>
                         </div>
                       </div>
                       <div className="col">
                         <div className="form-floating mb-3">
                           <input onChange={this.handleChangeEmployeeNumber} required placeholder="Your employee id" type="employee_id" id="employee_id" name="employee_id" className="form-control" />
-                          <label htmlFor="email">Your employee id</label>
+                          <label htmlFor="email">employee id</label>
                         </div>
                       </div>
                     </div>
-                    <button className="btn btn-lg btn-primary">I'm going to be a sales person!</button>
+                    <button className="btn btn-lg btn-primary">submit</button>
                   </form>
                   <div className={messageClasses} id="success-message">
-                    Congratulations! You're all signed up!
+                    congratulations! the new sales person is in the system!
                   </div>
                 </div>
               </div>

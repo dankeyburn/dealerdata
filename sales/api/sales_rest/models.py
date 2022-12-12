@@ -17,8 +17,6 @@ class VehicleModelVO(models.Model):
         on_delete=models.CASCADE,
     )
 
-   # def __str__(self):
-       # return f"{self.name}, {self.id}"
 
 class AutomobileVO(models.Model):
     vin = models.CharField(max_length=17, unique=True)

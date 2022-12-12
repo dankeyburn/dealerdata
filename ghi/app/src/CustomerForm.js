@@ -82,38 +82,38 @@ class CustomerForm extends React.Component {
               <div className="card shadow">
                 <div className="card-body">
                   <form className={formClasses} onSubmit={this.handleSubmit} id="create-customer-form">
-                    <h1 className="card-title">It's New Customer Time!</h1>
+                    <h1 className="card-title">it's new customer time!</h1>
                     <p className="mb-3">
-                      Welcome, new potential customer.
+                      welcome, new potential customer.
                     </p>
 
                     <p className="mb-3">
-                      Now, tell us about yourself.
+                      now, tell us about yourself.
                     </p>
                     <div className="row">
                       <div className="col">
                         <div className="form-floating mb-3">
                           <input onChange={this.handleChangeName} required placeholder="Your full name" type="text" id="name" name="name" className="form-control" />
-                          <label htmlFor="name">Your full name</label>
+                          <label htmlFor="name">your full name</label>
                         </div>
                       </div>
                       <div className="col">
                         <div className="form-floating mb-3">
                           <input onChange={this.handleChangeAddress} required placeholder="Your address" type="address" id="address" name="address" className="form-control" />
-                          <label htmlFor="address">Your address</label>
+                          <label htmlFor="address">your address</label>
                         </div>
                       </div>
                       <div className="col">
                         <div className="form-floating mb-3">
                           <input onChange={this.handleChangePhoneNumber} required placeholder="Your phone number" type="pone_number" id="phone_number" name="phone_number" className="form-control" />
-                          <label htmlFor="address">Your phone number</label>
+                          <label htmlFor="address">your phone number</label>
                         </div>
                       </div>
                     </div>
-                    <button className="btn btn-lg btn-primary">I'm going to be a customer!</button>
+                    <button className="btn btn-lg btn-primary">i'm going to be a customer!</button>
                   </form>
                   <div className={messageClasses} id="success-message">
-                    Congratulations! You're all signed up!
+                    congratulations! you're all signed up!
                   </div>
                 </div>
               </div>
