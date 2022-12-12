@@ -1,7 +1,7 @@
 from django.db import models
 from django import forms
 from django.urls import reverse
-import json
+import datetime
 
 
 class ManufacturerVO(models.Model):
@@ -46,16 +46,17 @@ class Technician(models.Model):
 
 class ServiceAppointment(models.Model):
     vehicle_vin = models.CharField(max_length=17)
-    appointment_datetime = models.DateTimeField(null=True)
-    appointment_reason = models.TextField()
-    appointment_finish = models.BooleanField(default=False)
     owner = models.CharField(max_length=200)
-    is_vip = models.BooleanField(default=False)
+    appointment_date = models.DateField(default=datetime.date.today())
+    appointment_time = models.TimeField(default=datetime.time())
     technician = models.ForeignKey(
         Technician,
         related_name="technicians",
         on_delete=models.CASCADE,
     )
+    appointment_reason = models.TextField()
+    appointment_finish = models.BooleanField(default=False)
+    is_vip = models.BooleanField(default=False)
 
     def __str__(self):
         return f"{self.id}, {self.vehicle_vin}"

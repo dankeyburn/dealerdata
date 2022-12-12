@@ -55,8 +55,8 @@ export default function ServiceHistory() {
               <tr key={appointment.id}>
                 <td>{appointment.vehicle_vin}</td>
                 <td>{appointment.owner}</td>
-                <td>{appointment.appointment_datetime}</td>
-                <td>{appointment.appointment_datetime}</td>
+                <td>{appointment.appointment_date}</td>
+                <td>{appointment.appointment_time}</td>
                 <td>{appointment.technician.name}</td>
                 <td>{appointment.appointment_reason}</td>
               </tr>
