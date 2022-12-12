@@ -16,14 +16,20 @@ export default function ServiceHistory() {
   }, [appointments]);
 
   const handleSubmit = (e) => {
-    appointments.filter((vin) => {
-      return vin.match(searchInput);
-    });
+    setAppointments(
+      appointments.filter((vehicle_vin) => {
+        return vehicle_vin.match(searchInput);
+      })
+    );
   };
 
   const handleChange = (e) => {
     e.preventDefault();
     setSearchInput(e.target.value);
+  };
+
+  const vinSearch = (vin) => {
+    return (vin = appointments.vehicle_vin);
   };
 
   return (
