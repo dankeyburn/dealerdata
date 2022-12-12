@@ -35,7 +35,7 @@ export default function VehicleModellist() {
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [vehicleModels]);
 
   return (
     <>

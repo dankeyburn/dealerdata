@@ -3,6 +3,7 @@ from django.urls import path
 from .views import (
     list_appointments,
     create_appointment,
+    show_appointment,
     list_technicians,
     create_technician,
     show_technician,
@@ -16,8 +17,8 @@ urlpatterns = [
     ),
     path(
         "services/<int:pk>/",
-        list_appointments,
-        name="list_appointments",
+        show_appointment,
+        name="show_appointment",
     ),
     path(
         "services/create/",
