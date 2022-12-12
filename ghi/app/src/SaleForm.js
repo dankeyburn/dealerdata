@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 class SalesForm extends React.Component {
     constructor(props) {
         super(props)
@@ -111,7 +112,7 @@ class SalesForm extends React.Component {
                   <option value="">Choose a sales person</option>
                   {this.state.sales_persons.map(salesPerson => {
                     return (
-                    <option key={salesPerson.id} value={salesPerson.employee_number}>
+                    <option key={salesPerson.id} value={salesPerson.id}>
                         {salesPerson.name}
                     </option>
                     );

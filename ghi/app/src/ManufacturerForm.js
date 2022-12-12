@@ -64,7 +64,7 @@ class ManufacturerForm extends React.Component {
             <div className="col">
               <div className="card shadow">
                 <div className="card-body">
-                  <form className={formClasses} onSubmit={this.handleSubmit} id="create-customer-form">
+                  <form className={formClasses} onSubmit={this.handleSubmit} id="create-manufacturer-form">
                     <h1 className="card-title">It's a New Manufacturer!</h1>
                     <p className="mb-3">
                       Welcome, new Manufacturer!.
@@ -81,7 +81,7 @@ class ManufacturerForm extends React.Component {
                         </div>
                       </div>
                     </div>
-                    <button className="btn btn-lg btn-primary">I'm going to be a customer!</button>
+                    <button className="btn btn-lg btn-primary">I'm going to be a manufacturer!</button>
                   </form>
                   <div className={messageClasses} id="success-message">
                     Congratulations! You're all signed up!

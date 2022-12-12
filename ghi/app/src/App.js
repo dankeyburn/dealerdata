@@ -14,6 +14,7 @@ import AutomobileForm from "./Service/AutomobileForm";
 import VehicleModelForm from "./Service/VehicleModelForm";
 import ServiceHistory from "./Service/ServiceHistory";
 import VehicleModellist from "./Service/VehicleModelList";
+import SalesPersonHistory from './SalesPersonHistory';
 
 
 function App(props) {
@@ -30,6 +31,7 @@ function App(props) {
           <Route path="/sales/" element={<SalesList sales={props.sales} />} />
           <Route path="/sales/new/" element={<SaleForm />} />
           <Route path="/salesperson/new/" element={<SalesPersonForm />} />
+          <Route path="/salesperson/history" element={<SalesPersonHistory />} />
           <Route path="/customer/new" element={<CustomerForm />} />
           <Route path="/manufacturers/new" element={<ManufacturerForm />} />
           <Route path="/manufacturers/" element={<ManufacturerList />} />
