@@ -14,6 +14,7 @@ import AutomobileForm from "./Service/AutomobileForm";
 import VehicleModelForm from "./Service/VehicleModelForm";
 import ServiceHistory from "./Service/ServiceHistory";
 import VehicleModellist from "./Service/VehicleModelList";
+import SalesPersonHistory from "./SalesPersonHistory";
 
 function App(props) {
   if (props.sales === undefined) {

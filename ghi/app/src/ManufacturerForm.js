@@ -66,7 +66,7 @@ class ManufacturerForm extends React.Component {
                 <form
                   className={formClasses}
                   onSubmit={this.handleSubmit}
-                  id="create-customer-form"
+                  id="create-manufacturer-form"
                 >
                   <h1 className="card-title">It's a New Manufacturer!</h1>
                   <p className="mb-3">Welcome, new Manufacturer!.</p>
@@ -89,7 +89,7 @@ class ManufacturerForm extends React.Component {
                     </div>
                   </div>
                   <button className="btn btn-lg btn-primary">
-                    I'm going to be a customer!
+                    I'm going to be a manufacturer!
                   </button>
                 </form>
                 <div className={messageClasses} id="success-message">
