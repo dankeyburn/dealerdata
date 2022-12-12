@@ -1,12 +1,12 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import MainPage from './MainPage';
-import Nav from './Nav';
-import SalesList from './SalesList';
-import SaleForm from './SaleForm';
-import SalesPersonForm from './SalesPersonForm';
-import CustomerForm from './CustomerForm';
-import ManufacturerForm from './ManufacturerForm';
-import ManufacturerList from './ManufacturerList';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import MainPage from "./MainPage";
+import Nav from "./Nav";
+import SalesList from "./SalesList";
+import SaleForm from "./SaleForm";
+import SalesPersonForm from "./SalesPersonForm";
+import CustomerForm from "./CustomerForm";
+import ManufacturerForm from "./ManufacturerForm";
+import ManufacturerList from "./ManufacturerList";
 import ServiceAppointmentList from "./Service/ServiceAppointmentList";
 import ServiceAppointmentForm from "./Service/ServiceAppointmentForm";
 import AutomobileList from "./Service/AutomobileList";
@@ -15,7 +15,6 @@ import VehicleModelForm from "./Service/VehicleModelForm";
 import ServiceHistory from "./Service/ServiceHistory";
 import VehicleModellist from "./Service/VehicleModelList";
 import SalesPersonHistory from './SalesPersonHistory';
-
 
 function App(props) {
   if (props.sales === undefined) {

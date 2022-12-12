@@ -16,14 +16,20 @@ export default function ServiceHistory() {
   }, [appointments]);
 
   const handleSubmit = (e) => {
-    appointments.filter((vin) => {
-      return vin.match(searchInput);
-    });
+    setAppointments(
+      appointments.filter((vehicle_vin) => {
+        return vehicle_vin.match(searchInput);
+      })
+    );
   };
 
   const handleChange = (e) => {
     e.preventDefault();
     setSearchInput(e.target.value);
+  };
+
+  const vinSearch = (vin) => {
+    return (vin = appointments.vehicle_vin);
   };
 
   return (
@@ -55,8 +61,8 @@ export default function ServiceHistory() {
               <tr key={appointment.id}>
                 <td>{appointment.vehicle_vin}</td>
                 <td>{appointment.owner}</td>
-                <td>{appointment.appointment_datetime}</td>
-                <td>{appointment.appointment_datetime}</td>
+                <td>{appointment.appointment_date}</td>
+                <td>{appointment.appointment_time}</td>
                 <td>{appointment.technician.name}</td>
                 <td>{appointment.appointment_reason}</td>
               </tr>
