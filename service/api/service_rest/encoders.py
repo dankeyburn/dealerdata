@@ -3,16 +3,16 @@ from .models import AutomobileVO, Technician, ServiceAppointment
 
 class AutomobileVOEncoder(ModelEncoder):
     model = AutomobileVO
-    properties = ["closet_name", "bin_size", "bin_number", "import_href"]
+    properties = ["color", "year", "vin", "model"]
 
 class TechnicianEncoder(ModelEncoder):
     model = Technician
-    properties = ["name", "employee_number"]
+    properties = ["name", "employee_number", "id"]
 
 
 class ServiceAppointmentEncoder(ModelEncoder):
     model = ServiceAppointment
-    properties = ["vehicle_vin", "appointment_datetime", "appointment_reason", "customer_name", "assigned_technician"]
+    properties = ["id", "vehicle_vin", "owner", "appointment_datetime", "technician", "appointment_reason", "appointment_finish", "is_vip"]
     encoders = {
-        "assigned_technician": TechnicianEncoder()
+        "technician": TechnicianEncoder()
     }

@@ -7,6 +7,14 @@ import SalesPersonForm from './SalesPersonForm';
 import CustomerForm from './CustomerForm';
 import ManufacturerForm from './ManufacturerForm';
 import ManufacturerList from './ManufacturerList';
+import ServiceAppointmentList from "./Service/ServiceAppointmentList";
+import ServiceAppointmentForm from "./Service/ServiceAppointmentForm";
+import AutomobileList from "./Service/AutomobileList";
+import AutomobileForm from "./Service/AutomobileForm";
+import VehicleModelForm from "./Service/VehicleModelForm";
+import ServiceHistory from "./Service/ServiceHistory";
+import VehicleModellist from "./Service/VehicleModelList";
+
 
 function App(props) {
   if (props.sales === undefined) {
@@ -25,6 +33,20 @@ function App(props) {
           <Route path="/customer/new" element={<CustomerForm />} />
           <Route path="/manufacturers/new" element={<ManufacturerForm />} />
           <Route path="/manufacturers/" element={<ManufacturerList />} />
+          <Route path="/services/" element={<ServiceAppointmentList />} />
+          <Route
+            path="/services/vehicle_history/"
+            element={<ServiceHistory vin_id={props.vin_id} />}
+          />
+          <Route
+            path="/services/create/"
+            element={<ServiceAppointmentForm />}
+          />
+          <Route path="/automobiles/" element={<AutomobileList />} />
+          <Route path="/automobiles/create/" element={<AutomobileForm />} />
+          <Route path="/vehicles/" element={<VehicleModellist />} />
+          <Route path="/vehicles/create/" element={<VehicleModelForm />} />
+
       </Routes>
     </div>
     </BrowserRouter>

@@ -11,7 +11,7 @@ function SalesList(props) {
                 </tr>
                 </thead>
                 <tbody>
-                {props.sales.map(sale => {
+                {props.sales?.map(sale => {
                     return (
                     <tr key={sale.id}>
                         <td>{ sale.price }</td>

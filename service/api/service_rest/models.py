@@ -36,26 +36,28 @@ class AutomobileVO(models.Model):
     def get_api_url(self):
         return reverse("api_vehicle_model", kwargs={"pk": self.id})
 
-class CustomerVO(models.Model):
-    name = models.CharField(max_length=200)
-    address = models.CharField(max_length=200)
-    phone_number = models.IntegerField()
-
 class Technician(models.Model):
     name = models.CharField(max_length=200)
     employee_number = models.CharField(max_length=50)
 
+    def __str__(self):
+        return f"{self.id}. {self.name}"
+
 class ServiceAppointment(models.Model):
     vehicle_vin = models.CharField(max_length=17)
-    appointment_datetime = models.DateTimeField()
+    appointment_datetime = models.DateTimeField(null=True)
     appointment_reason = models.TextField()
-    customer_name = models.ForeignKey(
-        CustomerVO,
-        related_name="customers",
-        on_delete=models.CASCADE,
-    )
-    assigned_technician = models.ForeignKey(
+    appointment_finish = models.BooleanField(default=False)
+    owner = models.CharField(max_length=200)
+    is_vip = models.BooleanField(default=False)
+    technician = models.ForeignKey(
         Technician,
         related_name="technicians",
         on_delete=models.CASCADE,
     )
+
+    def __str__(self):
+        return f"{self.id}, {self.vehicle_vin}"
+
+    def get_api_url(self):
+        return reverse("list_appointments", kwargs={"vin": self.id})
