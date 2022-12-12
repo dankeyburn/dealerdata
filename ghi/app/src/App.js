@@ -32,7 +32,10 @@ function App(props) {
             <Route path="/customer/new" element={<CustomerForm />} />
             <Route path="/manufacturers/new" element={<ManufacturerForm />} />
             <Route path="/manufacturers/" element={<ManufacturerList />} />
-            <Route path="/services/" element={<ServiceAppointmentList />} />
+            <Route
+              path="/services/list/"
+              element={<ServiceAppointmentList />}
+            />
             <Route
               path="/services/vehicle_history/"
               element={<ServiceHistory vin_id={props.vin_id} />}

@@ -26,7 +26,7 @@ class SalesForm extends React.Component {
     delete data.automobiles;
     delete data.sales_persons;
     delete data.customers;
-
+    console.log(data);
     const salesUrl = "http://localhost:8090/api/sales/";
     const fetchConfig = {
       method: "post",
@@ -133,10 +133,7 @@ class SalesForm extends React.Component {
                 <option value="">Choose a sales person</option>
                 {this.state.sales_persons.map((salesPerson) => {
                   return (
-                    <option
-                      key={salesPerson.id}
-                      value={salesPerson.employee_number}
-                    >
+                    <option key={salesPerson.id} value={salesPerson.id}>
                       {salesPerson.name}
                     </option>
                   );

@@ -11,7 +11,7 @@ from .views import (
 
 urlpatterns = [
     path(
-        "services/",
+        "services/list/",
         list_appointments,
         name="list_appointments",
     ),
