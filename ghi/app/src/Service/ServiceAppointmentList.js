@@ -37,8 +37,7 @@ export default function ServiceAppointmentList() {
           <tr>
             <th>VIN</th>
             <th>Customer Name</th>
-            <th>Date</th>
-            <th>Time</th>
+            <th>Date & Time</th>
             <th>Technician</th>
             <th>Reason</th>
           </tr>
@@ -49,8 +48,7 @@ export default function ServiceAppointmentList() {
               <tr key={appointment.id}>
                 <td>{appointment.vehicle_vin}</td>
                 <td>{appointment.owner}</td>
-                <td>{appointment.appointment_date}</td>
-                <td>{appointment.appointment_time}</td>
+                <td>{appointment.appointment_datetime}</td>
                 <td>{appointment.technician.name}</td>
                 <td>{appointment.appointment_reason}</td>
                 <td>

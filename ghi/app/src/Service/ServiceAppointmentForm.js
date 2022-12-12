@@ -6,8 +6,7 @@ export default function CreateServiceAppointment() {
   let [appointment, setAppointment] = useState({
     vehicle_vin: "",
     owner: "",
-    appointment_date: "",
-    appointment_time: "",
+    appointment_datetime: "",
     technician_id: "",
     appointment_reason: "",
     appointment_finish: false,
@@ -46,8 +45,7 @@ export default function CreateServiceAppointment() {
       setAppointment({
         vehicle_vin: "",
         owner: "",
-        appointment_date: "",
-        appointment_time: "",
+        appointment_datetime: "",
         technician_id: "",
         appointment_reason: "",
         appointment_finish: false,
@@ -77,39 +75,21 @@ export default function CreateServiceAppointment() {
         </div>
         <div className="form-floating mb-3">
           <input
-            value={appointment.appointment_date}
+            value={appointment.appointment_datetime}
             onChange={(e) =>
               setAppointment({
                 ...appointment,
-                appointment_date: e.target.value,
+                appointment_datetime: e.target.value,
               })
             }
-            placeholder="Appointment_date"
+            placeholder="Appointment_datetime"
             required
-            type="date"
-            name="appointment_date"
-            id="appointment_date"
+            type="datetime"
+            name="appointment_datetime"
+            id="appointment_datetime"
             className="form-control"
           />
-          <label htmlFor="appointment_date">Appointment Date</label>
-        </div>
-        <div className="form-floating mb-3">
-          <input
-            value={appointment.appointment_date}
-            onChange={(e) =>
-              setAppointment({
-                ...appointment,
-                appointment_date: e.target.value,
-              })
-            }
-            placeholder="Appointment_time"
-            required
-            type="time"
-            name="appointment_time"
-            id="appointment_time"
-            className="form-control"
-          />
-          <label htmlFor="appointment_time">Appointment Time</label>
+          <label htmlFor="appointment_datetime">Appointment Date & Time</label>
         </div>
         <div className="form-floating mb-3">
           <input
