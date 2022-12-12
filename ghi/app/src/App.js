@@ -28,8 +28,8 @@ function App(props) {
           />
           <Route path="/automobiles/" element={<AutomobileList />} />
           <Route path="/automobiles/create/" element={<AutomobileForm />} />
-          <Route path="/vehicles/" element={<VehicleModellist />} />
-          <Route path="/vehicles/create/" element={<VehicleModelForm />} />
+          <Route path="/models/" element={<VehicleModellist />} />
+          <Route path="/models/create/" element={<VehicleModelForm />} />
         </Routes>
       </div>
     </BrowserRouter>
