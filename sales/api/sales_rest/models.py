@@ -13,23 +13,13 @@ class VehicleModelVO(models.Model):
 
     manufacturer = models.ForeignKey(
         ManufacturerVO,
-        related_name="models",
+        related_name="model",
         on_delete=models.CASCADE,
     )
 
-   # def __str__(self):
-       # return f"{self.name}, {self.id}"
 
 class AutomobileVO(models.Model):
-    color = models.CharField(max_length=50)
-    year = models.PositiveSmallIntegerField()
     vin = models.CharField(max_length=17, unique=True)
-    model = models.ForeignKey(
-        VehicleModelVO,
-        related_name="automobiles",
-        on_delete=models.CASCADE,
-    )
-    import_href = models.CharField(max_length=200,unique = True)
 
     def __str__(self):
         return f"{self.vin}, {self.id}"
@@ -39,15 +29,25 @@ class Customer(models.Model):
     name = models.CharField(max_length=100)
     address = models.CharField(max_length=300)
     phone_number = models.CharField(max_length=20)
+
+    def get_api_url(self):
+        return reverse("api_customer", kwargs={"pk": self.id})
+
     def __str__(self):
-        return f"{self.id}, {self.name}"
+        return f"{self.name}, {self.id}"
+
+
 
 class SalesPerson(models.Model):
     name = models.CharField(max_length=100)
     employee_number = models.IntegerField()
 
+    def get_api_url(self):
+        return reverse("api_sales_person", kwargs={"pk": self.id})
+
     def __str__(self):
-        return f"{self.id}, {self.name}"
+        return f"{self.name}, {self.id}"
+
 
 
 class Sale(models.Model):
@@ -67,3 +67,10 @@ class Sale(models.Model):
         related_name="sale",
         on_delete=models.CASCADE,
     )
+
+
+    def get_api_url(self):
+        return reverse("api_sale", kwargs={"pk": self.id})
+
+    def __str__(self):
+        return f"{self.id}"

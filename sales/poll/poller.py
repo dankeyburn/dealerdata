@@ -18,11 +18,7 @@ def get_automobiles():
     content = json.loads(response.content)
     print(content)
     for auto in content["autos"]:
-        AutomobileVO.objects.update_or_create(
-            color=auto["color"],
-            year=auto["year"],
-            vin=auto["vin"],
-        )
+        AutomobileVO.objects.update_or_create(vin=auto['vin'])
 
 
 def poll():
