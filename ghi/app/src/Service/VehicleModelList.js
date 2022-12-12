@@ -39,6 +39,7 @@ export default function VehicleModellist() {
 
   return (
     <>
+      <h1>Vehicle Models</h1>
       <table className="table table-striped">
         <thead>
           <tr>

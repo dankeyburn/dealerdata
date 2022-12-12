@@ -58,10 +58,10 @@ export default function ServiceAppointmentList() {
                     Cancel
                   </button>
                   <button
-                    onChange={(e) =>
+                    onClick={(e) =>
                       setAppointments({
                         ...appointment,
-                        appointment_finish: !e.target.value,
+                        appointment_finish: true ? false : true,
                       })
                     }
                   >

@@ -1,0 +1,107 @@
+12/6:
+*updated service/api/service_rest/models.py
+  - class ManufacturerVO
+  - class VehicleModelVO
+  - class AutomobileVO
+  - class ServiceAppointment
+  - class Technician
+
+*created encoders.py
+  - AutomobileVOEncoder
+  - TechnicianDetailEncoder
+  - ServiceAppointmentEncoder
+
+*started to create views in views.py
+  - create_technician
+  - create_appointment
+  - list_technicians
+  - list_appointments
+
+*created urls.py service_rest
+  - added services/create
+  - added technicians/create
+  - added technicians/
+
+*updated urls.py in service_project
+
+*got services poller working
+-----------------------------------------
+12/7:
+
+*created SalesVO, SalesPersonVO
+
+*created create_appointment & list_appointment fnlty & react
+
+*created show_appointment fnlty
+
+*updated App.js routes with services/, services/create/, and services/vehicle_history
+
+_create vehicle_appointment_history fnlty
+
+_create react pages
+ =create a technician
+ =create a service appointment
+ =show list of scheduled appointments
+ -show history of service appointments for specific VIN
+
+
+Do I need a 'list_technicians' fn to for the ServiceAppointmentForm.js
+
+create new poller to get customer info
+
+-----------------------------------------
+12/8:
+
+* created automobilelist page in react
+* created automobileform in react
+
+_ create service appointment form
+ - technician drop-down -> can't import technicians/ list to map over # []
+ - submits and saves
+
+_ appointment list
+ - accesses appointments -> does not import appointments
+ - can filter by vin
+
+_ create vehicleModel form
+ - manufacturer dropdown - does not import manufacturers
+
+-----------------------------------------
+12/9:
+
+*created view service history page 
+
+*created list vehicle models page - delete doesn't work
+
+*ServiceAppointmentForm now submits
+
+-----------------------------------------
+12/10:
+
+rest
+
+-----------------------------------------
+12/11:
+
+*consolidated work into Service folder in app/src
+
+*added is_vip to ServiceAppointment model
+
+*create vehicle model correctly passes manufacturer name
+
+*merged auto-service branch with main
+ - cannot view history by VIN
+ - cannot Cancel / Finish appointments on list page
+
+-----------------------------------------
+12/12:
+
+* Delete a model button
+
+* Cancel button in service appointments
+
+* DateTime  (type=date, type=time)
+
+X Finish button (BROKE AF)
+
+X VIN filter
